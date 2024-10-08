@@ -1,0 +1,942 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding: 90px;
+}
+
+body {
+    font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(33, 37, 41);
+}
+
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 2.5rem 0.3125rem;
+}
+
+/************************ start of navbar *****************/
+.nav {
+    background-color: rgb(255 255 255);
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+    box-shadow: 0px 0px 14px 0px #0000001b;
+}
+
+.nav .container {
+    padding: 1.5625rem 0.3125rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav ul {
+    display: flex;
+    gap: 10px;
+}
+
+.logo {
+    font-size: 30px;
+    font-family: "Inter", sans-serif;
+    color: #212529;
+}
+
+.logo::after {
+    content: ".";
+    color: #ce1212;
+}
+
+.nav .links {
+    padding: 10px;
+}
+
+.nav .links a {
+    padding: 2px 10px;
+    font-size: 1.0625rem;
+    color: #7f7f90;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav .links a::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    left: 11px;
+    bottom: -8px;
+    height: 2px;
+    background-color: #ce1212;
+    transition: all 400ms 100ms;
+}
+
+.nav .links a:hover::before {
+    width: 80%;
+}
+
+.links a:hover {
+    color: #000;
+    transition: all 400ms;
+}
+
+.mode-group i {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.light {
+    display: none;
+}
+
+/*********************** end of navbar ****************************/
+
+
+/****************** start of Dark---Light mode  ******************/
+
+:has(.home:target) [href="#home"],
+:has(.chefs:target) [href="#chefs"],
+:has(.gallery:target) [href="#gallery"],
+:has(.contact:target) [href="#contact"] {
+    color: #000;
+}
+
+:has(.home:target) :has(.mode:checked) [href="#home"],
+:has(.chefs:target) :has(.mode:checked) [href="#chefs"],
+:has(.gallery:target) :has(.mode:checked) [href="#gallery"],
+:has(.contact:target) :has(.mode:checked) [href="#contact"] {
+    color: #fff;
+}
+
+:has(.home:target) [href="#home"]::before,
+:has(.chefs:target) [href="#chefs"]::before,
+:has(.gallery:target) [href="#gallery"]::before,
+:has(.contact:target) [href="#contact"]::before {
+    width: 80%;
+}
+
+::selection {
+    background-color: #d65454;
+    opacity: 0.2;
+    color: #fff;
+}
+
+:has(.mode:checked) ::selection {
+    background-color: #c17e1f;
+    opacity: 0.2;
+    color: #000;
+}
+
+:has(.mode:checked) body {
+    background-color: #202020;
+}
+
+:has(.mode:checked) .mode-group .dark {
+    display: none;
+}
+
+:has(.mode:checked) .mode-group .light {
+    display: block;
+
+}
+
+:has(.mode:checked) .links a {
+    color: #7f7f90;
+}
+
+:has(.mode:checked) .nav {
+    background-color: hsl(0, 0%, 9%);
+}
+
+:has(.mode:checked) nav .links a:hover,
+:has(.mode:checked) .logo,
+:has(.mode:checked) .links a:hover {
+    color: #fff;
+}
+
+:has(.mode:checked) .logo::after {
+    color: rgb(194, 126, 31);
+}
+
+:has(.mode:checked) .nav .links a::before,
+:has(.mode:checked) .contact-me .icon {
+    background-color: rgb(194, 126, 31);
+}
+
+:has(.mode:checked) .mode-group .light,
+:has(.mode:checked) .home h2,
+:has(.mode:checked) .btn-video .icon i,
+:has(.mode:checked) .header-content p,
+:has(.mode:checked) .cord-content h3,
+:has(.mode:checked) .contact-me .icon i,
+:has(.mode:checked) .contact-me h3,
+:has(.mode:checked) .contact-me p,
+:has(.mode:checked) .contact-me a {
+    color: white;
+}
+
+:has(.mode:checked) .home,
+:has(.mode:checked) .gallery {
+    background-color: rgb(38, 38, 38);
+}
+
+:has(.mode:checked) p {
+    color: #9f9f9f;
+}
+
+:has(.mode:checked) .btn-one,
+:has(.mode:checked) .contact .btn,
+:has(.mode:checked) .footer .subscription .sub-input .btn {
+    background-color: rgb(194, 126, 31);
+    color: black;
+}
+
+:has(.mode:checked) .btn-one:hover,
+:has(.mode:checked) .contact .btn:hover,
+:has(.mode:checked).footer .subscription .sub-input .btn:hover {
+    background-color: hsl(35, 72%, calc(44% + 5%));
+}
+
+:has(.mode:checked) .btn-video {
+    color: #fff;
+    transition: all 400ms;
+}
+
+:has(.mode:checked) .btn-video .icon::before {
+    background-color: #000;
+}
+
+:has(.mode:checked) .btn-video:hover i,
+:has(.mode:checked) .header-content span,
+:has(.mode:checked) .btn-video:hover,
+:has(.mode:checked) .footer .contact-details ul li i {
+    color: #c17e1f;
+}
+
+:has(.mode:checked) .btn-video .icon {
+    background-image: linear-gradient(to right, #c17e1f 0 50%, transparent 50% 100%);
+}
+
+:has(.mode:checked) .chefs-card .card,
+:has(.mode:checked) .contact form {
+    background-color: #171717;
+}
+
+:has(.mode:checked) .chefs-card .card .img-card::before {
+    background-image: url(../images/team-shape-dark.svg);
+}
+
+:has(.mode:checked) .contact-me div {
+    background-color: rgb(13, 13, 13);
+}
+
+:has(.mode:checked) .contact form :is(textarea, input):focus {
+    border-color: #c17e1f;
+    outline: none;
+}
+
+:has(.mode:checked) .contact form :is(textarea, input) {
+    border-color: #000;
+}
+
+/************ end of Dark---Light mode  ********/
+
+
+/************************ end of navbar ************************************/
+
+
+
+
+/************************ start of home section *****************/
+
+.home {
+    background-color: #ededed;
+    padding-top: 100px;
+    height: 100vh;
+}
+
+.home .container {
+    padding: 2.5rem 0.3125rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.home-content {
+    width: 40%;
+}
+
+.home-content h2 {
+    font-family: "Amatic SC", sans-serif;
+    color: #37373f;
+    font-size: 4.0625rem;
+}
+
+.home-content p {
+    margin: 20px 0;
+    line-height: 1.5;
+    color: #4f4f5a;
+    min-width: 104%;
+}
+
+.home-img {
+    width: 40%;
+}
+
+.home-img img {
+    width: 100%;
+    filter: drop-shadow(4px 4px 9px #000a);
+}
+
+.home-btn {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.home-btn .btn-one {
+    border: 0.125rem solid transparent;
+    border-radius: 0px 100vh 100vh;
+    background: rgb(206 18 18);
+    padding: 0.625rem 1.5625rem;
+    color: white;
+    font-size: 0.9375rem;
+    transition: background-color 400ms;
+}
+
+.home-btn .btn-one:hover {
+    background-color: hsl(0, 84%, calc(44% + 5%));
+}
+
+.home-btn .btn-video {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    transition: color 400ms;
+    color: #000;
+}
+
+.btn-video:hover {
+    color: hsl(0, 84%, calc(44% + 5%));
+}
+
+.btn-video .icon {
+    width: 3.4375rem;
+    height: 3.4375rem;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, #ce1212 0 50%, transparent 50% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.btn-video .icon::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.icon i {
+    z-index: 111;
+}
+
+
+.home-img img:hover {
+    animation: food 1s infinite;
+}
+
+/***************** start of animation css **************/
+
+@keyframes food {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+/*************** start of animation css *************/
+
+
+
+/********************** end of home section ***************/
+
+
+
+/************************ start of chefs section *******************/
+
+.chefs .container {
+    margin-top: 3.125rem;
+    margin-bottom: 3.125rem;
+    padding: 40px 5px;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 1.5625rem;
+}
+
+.header-content h2 {
+    font-size: 0.875rem;
+    color: #7f7f90;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: "Inter", "sans-serif";
+}
+
+.header-content p {
+    font-family: "Amatic SC", sans-serif;
+    font-size: 3.125rem;
+}
+
+.header-content span {
+    color: #ce1212;
+}
+
+.chefs-card {
+    padding: 30px 0;
+    display: flex;
+    gap: 1.875rem;
+}
+
+.chefs-card .card {
+    width: calc(calc(100% - 1.875rem * 2) / 3);
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    box-shadow: 3px 3px 15px 0px rgba(0, 0, 0, 0.1);
+    transition: all 400ms;
+}
+
+.chefs-card .card:hover {
+    transform: scale(1.07);
+}
+
+.chefs-card .card img {
+    width: 100%;
+}
+
+.chefs .img-card {
+    position: relative;
+}
+
+
+.chefs-card .card .img-card::before {
+    content: "";
+    position: absolute;
+    /* bottom: 35%; */
+    bottom: 0;
+    background-image: url(../images/team-shape.svg);
+    width: 100%;
+    height: 3.75rem;
+}
+
+.cord-content {
+    padding: 1.5625rem;
+    padding-top: 0.625rem;
+}
+
+.cord-content h3 {
+    font-family: "Inter", sans-serif;
+}
+
+.cord-content span {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: #7f7f90;
+    margin-block: 0.3125rem 0.625rem;
+
+}
+
+.cord-content p {
+    color: #7f7f90;
+    font-size: 0.9375rem;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+.chefs-card .card .social-box {
+    background-color: #ffffff4d;
+    border-radius: 0.3125rem;
+    padding: 0.625rem;
+    position: absolute;
+    top: 1.875rem;
+    right: -3rem;
+    transition: all 1.5s;
+}
+
+.chefs-card .card:hover .social-box {
+    right: 1rem;
+    transition: right 400ms 400ms;
+}
+
+.social-box i {
+    font-size: 1.125rem;
+    padding: 0.625rem 0.3125rem;
+    color: #37373f66;
+    transition: color 400ms;
+}
+
+.social-box i:hover {
+    color: #37373fe6;
+}
+
+/************************ end of chefs section *****************/
+
+
+/************************ start of gallery section *****************/
+
+.gallery {
+    background-color: #eee;
+    height: 1285px;
+}
+
+.gallery .container {
+    margin-top: 3.125rem;
+    margin-bottom: 3.125rem;
+    padding-top: 100px;
+    height: 100%;
+}
+
+.gallery-photos {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    height: 100%;
+}
+
+.gallery-photos .gallery-img {
+    width: calc(calc(100% - (1.25rem)* 2) / 3);
+    border: 4px solid #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-photos .gallery-img img {
+    width: 100%;
+    display: block;
+    transition: all 400ms;
+}
+
+.gallery-photos .gallery-img:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-photos .gallery-content {
+    width: 100%;
+    height: 100%;
+    padding: 0.9375rem;
+    background-color: #00000096;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 992;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: #fff;
+    transition: top 400ms;
+}
+
+.gallery-photos .gallery-img:hover .gallery-content {
+    top: 0;
+}
+
+.gallery-content h2 {
+    font-family: "Inter", sans-serif;
+}
+
+.gallery-img .gallery-content p {
+    color: #ddd;
+    text-align: center;
+}
+
+/************************ end of chefs section *****************/
+
+
+
+
+/************************ start of contact section *****************/
+
+.contact {
+    padding: 50px 0;
+}
+
+iframe {
+    width: 100%;
+    height: 21.875rem;
+    border: 0;
+}
+
+.contact-me {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7375rem;
+    margin-block: 1.5625rem;
+}
+
+.contact-me div {
+    width: 49%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 13px;
+    background-color: hsl(0, 0%, calc(100% - 4%));
+}
+
+.contact-me .content {
+    width: 70%;
+}
+
+.contact-me .icon {
+    width: 3.125rem;
+    height: 3.125rem;
+    background-color: #ce1212;
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.contact-me .icon i {
+    color: #ffffff;
+    font-size: 1.125rem;
+}
+
+.contact-me h3 {
+    color: #7d7d7d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    width: 100%;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1.25rem;
+    gap: 0.9375rem;
+    box-shadow: 0 0 1.875rem #00000014;
+}
+
+.contact form>* {
+    width: 100%;
+}
+
+.contact form .input-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact form .input-group input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9375rem;
+    width: 49%;
+}
+
+.contact form textarea {
+    resize: vertical;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    min-height: 9.375rem;
+    max-height: 18.75rem;
+}
+
+.contact form :is(input, textarea) {
+    padding: 0.9375rem 0.9375rem;
+    line-height: 1.5;
+    color: #212529;
+    border: 2px solid hsl(0, calc(0% + 10%), calc(100% - 10%));
+    transition: border-color 400ms;
+}
+
+.contact form :is(textarea, input):focus {
+    border-color: #ce1212;
+    outline: none;
+}
+
+.contact .btn {
+    background-color: #ce1212;
+    font-size: 0.9375rem;
+    border: 0.125rem solid transparent;
+    border-radius: 100px;
+    color: white;
+    padding: 0.75rem 2.5rem;
+    width: fit-content;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 1.5625rem;
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+.contact .btn:hover {
+    background-color: hsl(0, 84%, calc(44% + 5%));
+    color: hsl(0, 0%, 100%);
+}
+
+
+/************************ end of contact section *****************/
+
+
+/************************ start of footer section *****************/
+
+.footer {
+    background-image: linear-gradient(#0009, #0009),
+        url(../images/textured-metal-background.jpg);
+    background-size: contain;
+    color: #fff;
+    box-shadow: 0px -1px 5px #0007;
+}
+
+.footer .container {
+    display: flex;
+    padding-bottom: 0;
+}
+
+.footer .container .about {
+    width: 25%;
+    padding: 0 10px;
+}
+
+.footer .container .subscription {
+    width: 50%;
+    padding: 0 10px;
+}
+
+.footer .container .contact-details {
+    width: 25%;
+    padding: 0 10px;
+}
+
+/* .footer .container :is(.about, .contact-details) {
+    width: calc(calc(100% - 1.25rem * 2) / 4);
+}
+
+.footer .container :is(.subscription) {
+    width: calc(calc(100% - 1.25rem * 2) / 2);
+} */
+
+.footer .about .img-logo {
+    display: flex;
+    align-items: center;
+    /* gap: 0.625rem; */
+}
+
+.footer .about .img-logo img {
+    width: 2.5rem;
+}
+
+.footer .about .img-logo h2 {
+    font-size: 30px;
+}
+
+.footer .about .img-logo h2::after {
+    content: ".";
+    color: #ce1212;
+}
+
+.footer .about p {
+    margin-block: 0.625rem;
+    line-height: 1.3rem;
+}
+
+.footer .about h3 {
+    text-align: center;
+    padding: 0.625rem;
+    border-bottom: 2px solid #ddd6;
+    font-family: "Inter", sans-serif;
+}
+
+.footer .about .social-links {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: space-around;
+}
+
+.footer .about .social-links a {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.footer .subscription h3 {
+    font-family: "Inter", sans-serif;
+}
+
+.footer .subscription p {
+    margin-block: 0.625rem;
+    line-height: 1.3rem;
+}
+
+.footer .subscription .sub-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    gap: 5px;
+    margin-block: 1.25rem;
+}
+
+.footer .subscription .sub-input input {
+    width: 100%;
+    padding: 0.625rem;
+    outline: none;
+}
+
+.footer .subscription .sub-input .btn {
+    background-color: #ce1212;
+    font-size: 0.9375rem;
+    padding: 0.625rem;
+    min-width: 6.875rem;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+.footer .subscription .sub-input .btn:hover {
+    background-color: hsl(0, 84%, calc(44% + 5%));
+    color: hsl(0, 0%, 100%);
+}
+
+.footer .subscription .quick-links {
+    font-family: "Inter", sans-serif;
+}
+
+.footer .subscription .quick-links ul {
+    margin-top: 0.625rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
+.footer .subscription .quick-links ul li {
+    padding: 7px 15px;
+    width: 46%;
+    transition: all 400ms;
+}
+
+.footer .subscription .quick-links ul li i {
+    margin-right: 5px;
+}
+
+.footer .subscription .quick-links ul li:hover {
+    transform: translateX(10px);
+    background-color: #222;
+}
+
+.footer .subscription .quick-links ul li a {
+    color: white;
+}
+
+.footer .contact-details h3 {
+    margin-bottom: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+.footer .contact-details ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+}
+
+.footer .contact-details ul li i {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    color: #ce1212;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.footer .contact-details ul li i span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-inline: 9px;
+    font-family: system-ui;
+    min-width: 100%;
+}
+
+.footer .contact-details ul li i a {
+    font-size: 16px;
+    padding-inline: 9px;
+    font-family: system-ui;
+    color: white;
+    font-weight: 400;
+}
+
+/************************ end of footer section *****************/
