@@ -488,7 +488,6 @@ a {
 .chefs-card .card .img-card::before {
     content: "";
     position: absolute;
-    /* bottom: 35%; */
     bottom: 0;
     background-image: url(../images/team-shape.svg);
     width: 100%;
@@ -779,18 +778,10 @@ iframe {
     padding: 0 10px;
 }
 
-/* .footer .container :is(.about, .contact-details) {
-    width: calc(calc(100% - 1.25rem * 2) / 4);
-}
-
-.footer .container :is(.subscription) {
-    width: calc(calc(100% - 1.25rem * 2) / 2);
-} */
 
 .footer .about .img-logo {
     display: flex;
     align-items: center;
-    /* gap: 0.625rem; */
 }
 
 .footer .about .img-logo img {
